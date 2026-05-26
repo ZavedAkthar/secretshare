@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Encode</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
+</head>
+
+<body>
+
+<div class="container glass">
+
+    <h1>🔒 Encode Secret</h1>
+
+    <form method="POST" enctype="multipart/form-data">
+
+        <select name="type" id="typeSelect">
+
+            <option value="text">Text</option>
+
+            <option value="image">Image</option>
+
+        </select>
+
+        <textarea
+            name="text"
+            id="textInput"
+            placeholder="Enter secret message"
+        ></textarea>
+
+        <input
+            type="file"
+            name="image"
+            id="imageInput"
+            style="display:none"
+        >
+
+        <button type="submit">
+            Generate Secret Code
+        </button>
+
+    </form>
+
+</div>
+
+<script>
+
+const typeSelect = document.getElementById('typeSelect');
+const textInput = document.getElementById('textInput');
+const imageInput = document.getElementById('imageInput');
+
+typeSelect.addEventListener('change', () => {
+
+    if(typeSelect.value === 'text') {
+
+        textInput.style.display = 'block';
+        imageInput.style.display = 'none';
+
+    } else {
+
+        textInput.style.display = 'none';
+        imageInput.style.display = 'block';
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>

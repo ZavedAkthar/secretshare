@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Decode</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
+</head>
+
+<body>
+
+<div class="container glass">
+
+    <h1>🗝 Decode Secret</h1>
+
+    <form method="POST">
+
+        <input
+            type="text"
+            name="code"
+            placeholder="Enter Secret Code"
+            required
+        >
+
+        <button type="submit">
+            Decode
+        </button>
+
+    </form>
+
+    {% if found == True %}
+
+        {% if text %}
+
+            <div class="result-box">
+
+                <h2>Decoded Text</h2>
+
+                <p>{{ text }}</p>
+
+            </div>
+
+        {% endif %}
+
+        {% if image %}
+
+            <div class="result-box">
+
+                <h2>Decoded Image</h2>
+
+                <img
+                    src="{{ url_for('static', filename=image) }}"
+                    class="preview"
+                >
+
+            </div>
+
+        {% endif %}
+
+    {% elif found == False %}
+
+        <div class="error">
+            Invalid Secret Code
+        </div>
+
+    {% endif %}
+
+    <a href="/" class="back-link">
+        ← Back Home
+    </a>
+
+</div>
+
+</body>
+</html>
